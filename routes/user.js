@@ -7,7 +7,7 @@ client.connect(function(err, result){
     console.log('cassandra connected: user');
 });
 
-var getByUsername = 'SELECT * FROM shoutapp.users WHERE username = ?';
+var getByUsername = 'SELECT * FROM tweetbox.users WHERE username = ?';
 
 router.get('/:username', function(req, res){
 	client.execute(getByUsername,[req.params.username], function(err, result){
@@ -23,7 +23,7 @@ router.get('/:username', function(req, res){
 	});
 });
 
-var deleteUser = "DELETE FROM shoutapp.users WHERE username = ?";
+var deleteUser = "DELETE FROM tweetbox.users WHERE username = ?";
 
 router.delete('/:username', function(req, res){
 	client.execute(deleteUser,[req.params.username], function(err, result){
